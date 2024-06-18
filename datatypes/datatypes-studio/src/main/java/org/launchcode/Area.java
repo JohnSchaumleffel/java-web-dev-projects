@@ -12,6 +12,11 @@ public class Area {
         System.out.println("Enter a radius:");
         //Catch input
         double radius = input.nextDouble();
+        //Validate input
+        if (radius < 0){
+            System.out.println("Please input a positive number");
+            System.exit(0);
+        }
         //Do area math
         //double area = 3.14 * radius * radius;
         //Updated area math
