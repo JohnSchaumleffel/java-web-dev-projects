@@ -8,21 +8,28 @@ public class Area {
     public static void main(String[] args){
         //Create new scanner instance
         Scanner input = new Scanner(System.in);
-        //Prompt user for radius
-        System.out.println("Enter a radius:");
-        //Catch input
-        double radius = input.nextDouble();
-        //Validate input
-        if (radius < 0){
-            System.out.println("Please input a positive number");
-            System.exit(0);
+        // create radius
+        double radius;
+        //Asks for input and validates that the input is a positive number before proceeding
+        while (true) {
+            System.out.println("Enter a radius:");
+            try {
+                radius = Double.parseDouble(input.next());
+                if (radius < 0){
+                    System.out.println("Input positive number");
+                    continue;
+                }
+                break; //will only get here if input was a double
+            }
+            catch (NumberFormatException ignore) {
+                System.out.println("Invalid input.");
+            }
         }
-        //Do area math
-        //double area = 3.14 * radius * radius;
-        //Updated area math
+        //Updated area math called from method
         double area = Circle.getArea(radius);
         //Print result
         System.out.println("The area of a circle with a radius of " + radius + " is: " + area);
+        //CLose scanner
         input.close();
     }
 }
